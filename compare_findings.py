@@ -7,7 +7,6 @@ import xml.etree.ElementTree as ET
 
 # this script assumes that the row (linter,number) exists in csv file
 
-
 def extract_number_baseline(filename: str, linter: str) -> int:
     """ open baseline file and extract the number of findings in the row
         that matches 'linter'
@@ -58,6 +57,7 @@ def extract_number_sarif(filename: str)-> int:
     except OSError:
         print ("Could not open/read file:", filename)
         return -1
+
 
 def extract_number_xml(filename: str) -> int:
     try:
@@ -111,9 +111,6 @@ def main(basefile: str, new_report: str, linter: str)-> int:
             else:
                 print("File with reports should be json or sarif, and have extension .json, .sarif, or .xml")
                 return(-1)
-
-    
-    
     
     print("number offindings in new report", number_findings_new_report)
     if number_findings_new_report == -1:
@@ -137,21 +134,3 @@ if __name__ == "__main__":
     else:
         print("Usage: ./compare_findings baseline new_semgrep_report")
         sys.exit(1)
-
-
-
-##corrida
-#./semgrep.sh
-#./compare_findings baseline semgrep_output_25_06.json semgrep
-# 0 o 1
-# chequear si ese linter existe en el csv
-# check_if_linter_exists(basefile, linter)
-# sino, lo agrega
-#pero antes, esto va a ser una funcion
-#set_baseline baseline semgrep_output_24_06.json semgrep
-#
-#
-#
-#
-#
-#
